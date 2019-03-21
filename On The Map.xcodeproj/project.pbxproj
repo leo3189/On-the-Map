@@ -13,6 +13,8 @@
 		D75A3E362243B42D008961A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D75A3E342243B42D008961A4 /* LaunchScreen.storyboard */; };
 		D75A3E412243B4E0008961A4 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75A3E402243B4E0008961A4 /* LoginVC.swift */; };
 		D75A3E452243B82D008961A4 /* logInButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75A3E442243B82D008961A4 /* logInButtonView.swift */; };
+		D75A3E472243B91D008961A4 /* logInTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75A3E462243B91D008961A4 /* logInTextFieldView.swift */; };
+		D75A3E492243BA0E008961A4 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75A3E482243BA0E008961A4 /* LoginModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		D75A3E372243B42D008961A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D75A3E402243B4E0008961A4 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		D75A3E442243B82D008961A4 /* logInButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logInButtonView.swift; sourceTree = "<group>"; };
+		D75A3E462243B91D008961A4 /* logInTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logInTextFieldView.swift; sourceTree = "<group>"; };
+		D75A3E482243BA0E008961A4 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +75,7 @@
 		D75A3E3D2243B47C008961A4 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				D75A3E482243BA0E008961A4 /* LoginModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -87,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				D75A3E442243B82D008961A4 /* logInButtonView.swift */,
+				D75A3E462243B91D008961A4 /* logInTextFieldView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -162,6 +168,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D75A3E492243BA0E008961A4 /* LoginModel.swift in Sources */,
+				D75A3E472243B91D008961A4 /* logInTextFieldView.swift in Sources */,
 				D75A3E452243B82D008961A4 /* logInButtonView.swift in Sources */,
 				D75A3E412243B4E0008961A4 /* LoginVC.swift in Sources */,
 				D75A3E2C2243B42A008961A4 /* AppDelegate.swift in Sources */,
