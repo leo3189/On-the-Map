@@ -29,7 +29,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             if success {
                 print(success)
             } else {
-                print(error?.localizedDescription)
+                print("LoginVC Completion: \(String(describing: error?.localizedDescription))")
             }
         })
     }
