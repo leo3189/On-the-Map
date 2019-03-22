@@ -15,5 +15,7 @@ class logInTextFieldView: UITextField {
         self.layer.borderColor = UIColor.lightGray.cgColor
         self.borderStyle = .none
         self.layer.cornerRadius = 5
+        
+        self.contentHorizontalAlignment = .trailing
     }
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Login {
+struct Login: Codable {
     let email: String!
     let password: String!
 }

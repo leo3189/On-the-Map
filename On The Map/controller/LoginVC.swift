@@ -8,15 +8,32 @@
 
 import UIKit
 
-class LoginVC: UIViewController {
+class LoginVC: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var userEmail: UITextField!
+    @IBOutlet weak var userPassword: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        userEmail.delegate = self
+        userPassword.delegate = self
+        
     }
     
-
+    @IBAction func loginBtnTapped(_ sender: Any) {
+        ClientApi.login(username: userEmail.text!, password: userPassword.text!, completion: { (success, error) in
+            if success {
+                print(success)
+            } else {
+                print(error?.localizedDescription)
+            }
+        })
+    }
+    
    
 
 }
