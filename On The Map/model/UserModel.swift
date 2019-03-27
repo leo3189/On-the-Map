@@ -9,8 +9,8 @@
 import Foundation
 
 struct User: Codable{
-    let account: Account
-    let session: Session
+    let account: Account?
+    let session: Session?
 }
 
 struct Account: Codable {

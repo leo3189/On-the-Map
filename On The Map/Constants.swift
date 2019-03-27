@@ -12,8 +12,8 @@ struct Constants {
     
     struct Udacity {
         static let Scheme = "https"
-        static let Host = "www.udacity.com"
-        static let Path = "/api"
+        static let Host = "onthemap-api.udacity.com"
+        static let Path = "/v1"
     }
     
     struct UdacityMethod {

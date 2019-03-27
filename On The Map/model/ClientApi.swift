@@ -19,7 +19,7 @@ class ClientApi: NSObject {
     var session = URLSession.shared
     
     var sessionID: String? = nil
-    var useKey = ""
+    var userKey = ""
     var userName = ""
     
     override init() {
@@ -132,7 +132,96 @@ class ClientApi: NSObject {
             default:
                 sendError("Your request returned a status code other than 2xx!")
             }
+            
+            guard let data = data else {
+                sendError("No data was returned by the request")
+                return
+            }
+            
+            var newData = data
+            if apiType == .udacity {
+                let range = Range(5..<data.count)
+                newData = data.subdata(in: range)
+            }
+            
+            self.showActivityIndicator(false)
+            
+            completionHandler(newData, nil)
         }
+        task.resume()
+        
+        return task
+        
+    }
+    
+    func delete(
+        _ method: String,
+        parameters: [String: AnyObject],
+        apiType: APITpye = .udacity,
+        completionHandler: @escaping (_ result: Data?, _ error: NSError?) -> Void) -> URLSessionDataTask {
+        let request = NSMutableURLRequest(url: buildURL(parameters, withPathExtension: method, apiType: apiType))
+        request.httpMethod = "DELETE"
+        
+        var xsrfCookie: HTTPCookie? = nil
+        let sharedCookieStorage = HTTPCookieStorage.shared
+        
+        for cookie in sharedCookieStorage.cookies! {
+            if cookie.name == "XSRF-TOKEN" {
+                xsrfCookie = cookie
+            }
+        }
+        
+        if let xsrfCookie = xsrfCookie {
+            request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+        }
+        
+        showActivityIndicator(true)
+        
+        let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
+            func sendError(_ error: String) {
+                self.showActivityIndicator(false)
+                print(error)
+                let userInfo = [NSLocalizedDescriptionKey: error]
+                completionHandler(nil, NSError(domain: "DELETE", code: 1, userInfo: userInfo))
+            }
+            
+            guard (error == nil) else {
+                sendError("There was an error with your request: \(error!.localizedDescription)")
+                return
+            }
+            
+            guard let statusCode = (response as? HTTPURLResponse)?.statusCode else {
+                sendError("Request did not return a valid response.")
+                return
+            }
+            
+            switch (statusCode) {
+            case 403:
+                sendError("Please check your credentials and try again.")
+            case 200..<200:
+                break
+            default:
+                sendError("Your request returned a status code other than 2xx!")
+            }
+            
+            guard let data = data else {
+                sendError("No data was returned by the request!")
+                return
+            }
+            
+            var newData = data
+            if apiType == .udacity {
+                let range = Range(5..<data.count)
+                newData = data.subdata(in: range)
+            }
+            
+            self.showActivityIndicator(false)
+            
+            completionHandler(newData, nil)
+        }
+        task.resume()
+        
+        return task
         
     }
     
@@ -147,8 +236,20 @@ class ClientApi: NSObject {
             let queryItem = URLQueryItem(name: key, value: "\(value)")
             components.queryItems!.append(queryItem)
         }
-        
+        print("URL: \(components.url!)")
         return components.url!
+    }
+    
+    private func convertData(_ data: Data, completionHandler: (_ result: AnyObject?, _ error: NSError?) -> Void) {
+        var parseResult: AnyObject! = nil
+        do {
+            parseResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as AnyObject
+        } catch {
+            let userInfo = [NSLocalizedDescriptionKey: "Could not parse the data as json: \(data)"]
+            completionHandler(nil, NSError(domain: "convertData", code: 1, userInfo: userInfo))
+        }
+        
+        completionHandler(parseResult, nil)
     }
     
     private func showActivityIndicator(_ show: Bool) {
@@ -156,19 +257,89 @@ class ClientApi: NSObject {
             UIApplication.shared.isNetworkActivityIndicatorVisible = show
         }
     }
+}
+
+extension ClientApi {
     
-    class func login(username: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
-        let url = URL(string: "https://www.udacity.com/api/session")
-        let body = "{\"udacity\": {\"username\": \"\(username)\", \"password\": \"\(password)\"}}"
-        taskForPOSTRequest(url: url!, body: body) { response, error in
-            if let response = response {
-                print("response \(response)")
-                completion(true, nil)
+    func login(userEmail: String, userPassword: String, completion: @escaping (_ success: Bool, _ errorStr: String?) -> Void) {
+        let jsonBody = "{\"udacity\": {\"username\": \"\(userEmail)\", \"password\": \"\(userPassword)\"}}"
+        _ = post(Constants.UdacityMethod.Authentication, parameters: [:], jsonBody: jsonBody, completionHandler: { (data, error) in
+            if let error = error {
+                print(error)
+                completion(false, error.localizedDescription)
             } else {
-                print("Login api error")
-                completion(false, error)
+                let userSessionData = self.parseUserSession(data: data)
+                print("Session: \(userSessionData)")
+                if let sessionData = userSessionData.0 {
+                    guard let account = sessionData.account, account.registered == true else {
+                        completion(false, "Login Failed, User not registered.")
+                        return
+                    }
+                    
+                    guard let userSession = sessionData.session else {
+                        completion(false, "Login Failed, no session to the user credentials provided.")
+                        return
+                    }
+                    
+                    self.userKey = account.key
+                    self.sessionID = userSession.id
+                    completion(true, nil)
+                } else {
+                    completion(false, userSessionData.1!.localizedDescription)
+                    self.sessionID = nil
+                }
             }
-        }
+        })
     }
     
+    func logout(completion: @escaping (_ success: Bool, _ error: Error?) -> Void) {
+        _ = delete(Constants.UdacityMethod.Authentication, parameters: [:], completionHandler: { (data, error) in
+            if let error = error {
+                print(error)
+                completion(false, error)
+            } else {
+                let sessionData = self.parseSession(data: data)
+                if let _ = sessionData.0 {
+                    self.userKey = ""
+                    self.sessionID = ""
+                    completion(true, nil)
+                } else {
+                    completion(false, sessionData.1!)
+                }
+            }
+        })
+    }
+    
+    func parseUserSession(data: Data?) -> (User?, NSError?){
+        var studentLocation: (userSession: User?, error: NSError?) = (nil, nil)
+        do {
+            if let data = data {
+                let jsonDecoder = JSONDecoder()
+                studentLocation.userSession = try jsonDecoder.decode(User.self, from: data)
+            }
+        } catch {
+            print("Could not parse the data as json: \(error.localizedDescription)")
+            let userInfo = [NSLocalizedDescriptionKey: error]
+            studentLocation.error = NSError(domain: "parseUserSession", code: 1, userInfo: userInfo)
+        }
+        return studentLocation
+    }
+    
+    func parseSession(data: Data?) -> (Session?, Error?) {
+        var sessionData: (session: Session?, error: Error?) = (nil, nil)
+        do {
+            struct SessionData: Codable {
+                let session: Session
+            }
+            
+            if let data = data {
+                let jsonDecoder = JSONDecoder()
+                sessionData.session = try jsonDecoder.decode(SessionData.self, from: data).session
+            }
+        } catch {
+            print(error)
+            sessionData.error = error
+        }
+        return sessionData
+    }
 }
