@@ -80,6 +80,7 @@ class PostingView: UIViewController {
     private func syncStudentLocation(_ coordinate: CLLocationCoordinate2D) {
         self.enableControllers(true)
         
+        let vc = storyboard?.instantiateViewController(withIdentifier: "MapPinLocationView") as! MapPinLocation
         
     }
     

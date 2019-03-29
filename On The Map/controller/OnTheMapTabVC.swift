@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
 
-class OnTheMapTabVC: UITabBarController {
+class OnTheMapTabVC: UITabBarController, MKMapViewDelegate {
     
     @IBOutlet weak var logOutButton: UIBarButtonItem!
     @IBOutlet weak var addPinButton: UIBarButtonItem!

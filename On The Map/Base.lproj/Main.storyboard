@@ -238,10 +238,10 @@
             </objects>
             <point key="canvasLocation" x="3276" y="-192.11822660098522"/>
         </scene>
-        <!--View Controller-->
+        <!--Map Pin Location-->
         <scene sceneID="fsU-j1-9cJ">
             <objects>
-                <viewController id="Jzs-94-siD" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapPinLocationView" id="Jzs-94-siD" customClass="MapPinLocation" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="r47-HX-fnk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -253,15 +253,27 @@
                                 <rect key="frame" x="169" y="387.66666666666669" width="37" height="37"/>
                                 <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zYJ-u9-pQu">
-                                <rect key="frame" x="34" y="714" width="290" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zYJ-u9-pQu">
+                                <rect key="frame" x="42.666666666666657" y="720" width="290" height="50"/>
+                                <color key="backgroundColor" red="0.18039215689999999" green="0.52941176469999995" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="MxM-ZU-YPp"/>
+                                    <constraint firstAttribute="width" constant="290" id="mKG-NE-vmF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <state key="normal" title="FINISH">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="finishBtnTapped:" destination="Jzs-94-siD" eventType="touchUpInside" id="4Sd-3e-Uiz"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="zYJ-u9-pQu" firstAttribute="centerX" secondItem="r47-HX-fnk" secondAttribute="centerX" id="AJq-Ix-C0h"/>
                             <constraint firstItem="Xgx-gt-u07" firstAttribute="centerX" secondItem="r47-HX-fnk" secondAttribute="centerX" id="VEm-Yv-pHf"/>
+                            <constraint firstItem="zYJ-u9-pQu" firstAttribute="top" secondItem="i5K-mB-49V" secondAttribute="bottom" constant="-92" id="fza-lN-s3i"/>
                             <constraint firstItem="i5K-mB-49V" firstAttribute="top" secondItem="qTK-AQ-bxF" secondAttribute="top" id="qEd-uK-INd"/>
                             <constraint firstItem="i5K-mB-49V" firstAttribute="leading" secondItem="qTK-AQ-bxF" secondAttribute="leading" id="qsP-54-qXE"/>
                             <constraint firstItem="i5K-mB-49V" firstAttribute="trailing" secondItem="qTK-AQ-bxF" secondAttribute="trailing" id="rtq-5a-mhy"/>
@@ -270,6 +282,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qTK-AQ-bxF"/>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="Xgx-gt-u07" id="Gpu-eG-XzY"/>
+                        <outlet property="finishButton" destination="zYJ-u9-pQu" id="Ewu-rK-2tC"/>
+                        <outlet property="mapView" destination="i5K-mB-49V" id="bCQ-zX-gyz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ova-4k-Xei" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
