@@ -154,6 +154,127 @@
             </objects>
             <point key="canvasLocation" x="2464.8000000000002" y="-300"/>
         </scene>
+        <!--Posting View-->
+        <scene sceneID="1Qw-hj-0ZO">
+            <objects>
+                <viewController storyboardIdentifier="PostingClass" id="UIO-Cd-lOz" customClass="PostingView" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="P3k-t7-Fbd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_world" translatesAutoresizingMaskIntoConstraints="NO" id="ppJ-JQ-Kuz">
+                                <rect key="frame" x="147.66666666666666" y="44" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="D7Y-7p-aQV"/>
+                                    <constraint firstAttribute="height" constant="80" id="yFj-An-D7E"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hj9-GR-fW1">
+                                <rect key="frame" x="42.666666666666657" y="156" width="290" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="290" id="6eW-ZT-1wR"/>
+                                    <constraint firstAttribute="height" constant="50" id="nqn-hJ-yJc"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="enterLocationBtnTapped:" destination="UIO-Cd-lOz" eventType="editingDidEnd" id="SjS-f5-XAO"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a Website" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S6w-hd-wfj">
+                                <rect key="frame" x="42.666666666666657" y="233" width="290" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="L2g-u4-m5w"/>
+                                    <constraint firstAttribute="width" constant="290" id="P9w-fu-eK3"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="enterWebSiteBtnTapped:" destination="UIO-Cd-lOz" eventType="editingDidEnd" id="taO-76-Qv6"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AH9-I9-r17">
+                                <rect key="frame" x="42" y="312" width="290" height="50"/>
+                                <color key="backgroundColor" red="0.18039215689999999" green="0.52941176469999995" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <state key="normal" title="FIND LOCATION">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="findLocationBtnTapped:" destination="UIO-Cd-lOz" eventType="touchUpInside" id="Mn2-Uo-R39"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="L2a-Zc-MIR">
+                                <rect key="frame" x="177.66666666666666" y="397" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="ENf-kk-yUP"/>
+                                    <constraint firstAttribute="width" constant="20" id="RCr-UD-hnx"/>
+                                </constraints>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="S6w-hd-wfj" firstAttribute="centerX" secondItem="P3k-t7-Fbd" secondAttribute="centerX" id="RPI-AV-n21"/>
+                            <constraint firstItem="hj9-GR-fW1" firstAttribute="centerX" secondItem="P3k-t7-Fbd" secondAttribute="centerX" id="V02-tT-2ZT"/>
+                            <constraint firstItem="S6w-hd-wfj" firstAttribute="top" secondItem="hj9-GR-fW1" secondAttribute="bottom" constant="27" id="eZV-bO-tgc"/>
+                            <constraint firstItem="ppJ-JQ-Kuz" firstAttribute="top" secondItem="6Th-ys-eqU" secondAttribute="top" id="gKq-ce-fMb"/>
+                            <constraint firstItem="L2a-Zc-MIR" firstAttribute="top" secondItem="AH9-I9-r17" secondAttribute="bottom" constant="34" id="mbF-yw-G3j"/>
+                            <constraint firstItem="L2a-Zc-MIR" firstAttribute="centerX" secondItem="P3k-t7-Fbd" secondAttribute="centerX" id="nZ5-wj-VOv"/>
+                            <constraint firstItem="hj9-GR-fW1" firstAttribute="top" secondItem="ppJ-JQ-Kuz" secondAttribute="bottom" constant="32" id="rtM-Oj-d5h"/>
+                            <constraint firstItem="ppJ-JQ-Kuz" firstAttribute="centerX" secondItem="6Th-ys-eqU" secondAttribute="centerX" id="z5e-Qp-ZpF"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Th-ys-eqU"/>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="L2a-Zc-MIR" id="osc-Ao-MF6"/>
+                        <outlet property="enterLocationTF" destination="hj9-GR-fW1" id="YkS-IE-fLN"/>
+                        <outlet property="enterWebSiteTF" destination="S6w-hd-wfj" id="fju-e1-F2N"/>
+                        <outlet property="findLocationButton" destination="AH9-I9-r17" id="Yh7-eP-nMs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uh5-u6-Q6f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3276" y="-192.11822660098522"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="fsU-j1-9cJ">
+            <objects>
+                <viewController id="Jzs-94-siD" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="r47-HX-fnk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="i5K-mB-49V">
+                                <rect key="frame" x="0.0" y="44" width="375" height="768"/>
+                            </mapView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Xgx-gt-u07">
+                                <rect key="frame" x="169" y="387.66666666666669" width="37" height="37"/>
+                                <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zYJ-u9-pQu">
+                                <rect key="frame" x="34" y="714" width="290" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Xgx-gt-u07" firstAttribute="centerX" secondItem="r47-HX-fnk" secondAttribute="centerX" id="VEm-Yv-pHf"/>
+                            <constraint firstItem="i5K-mB-49V" firstAttribute="top" secondItem="qTK-AQ-bxF" secondAttribute="top" id="qEd-uK-INd"/>
+                            <constraint firstItem="i5K-mB-49V" firstAttribute="leading" secondItem="qTK-AQ-bxF" secondAttribute="leading" id="qsP-54-qXE"/>
+                            <constraint firstItem="i5K-mB-49V" firstAttribute="trailing" secondItem="qTK-AQ-bxF" secondAttribute="trailing" id="rtq-5a-mhy"/>
+                            <constraint firstAttribute="bottom" secondItem="i5K-mB-49V" secondAttribute="bottom" id="uFl-gt-T6l"/>
+                            <constraint firstItem="Xgx-gt-u07" firstAttribute="centerY" secondItem="r47-HX-fnk" secondAttribute="centerY" id="w60-fR-G2S"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qTK-AQ-bxF"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ova-4k-Xei" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4008.8000000000002" y="-192.11822660098522"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="RGX-Fk-8vF">
             <objects>
@@ -218,6 +339,7 @@
         <image name="icon_mapview-deselected" width="75" height="50"/>
         <image name="icon_mapview-selected" width="75" height="50"/>
         <image name="icon_refresh" width="24" height="24"/>
+        <image name="icon_world" width="52" height="67"/>
         <image name="logo-u" width="62" height="62"/>
     </resources>
 </document>

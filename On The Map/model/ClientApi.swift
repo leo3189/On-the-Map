@@ -342,4 +342,85 @@ extension ClientApi {
         }
         return sessionData
     }
+    
+    func parseStudentInfo(data: Data?) -> (StudentInfo?, NSError?) {
+        var response: (StudentInfo: StudentInfo?, error: NSError?) = (nil, nil)
+        do {
+            if let data = data {
+                let jsonDecoder = JSONDecoder()
+                response.StudentInfo = try jsonDecoder.decode(StudentInfo.self, from: data)
+            }
+        } catch {
+            print("Could not parse the data as JSON: \(error.localizedDescription)")
+            let userInfo = [NSLocalizedDescriptionKey: error]
+            response.error = NSError(domain: "parseStudentInfo", code: 1, userInfo: userInfo)
+        }
+        return response
+    }
+    
+    func studentInfo(completion: @escaping (_ result: StudentInfo?, _ error: NSError?) -> Void) {
+        let url = Constants.UdacityMethod.Users + "\(userKey)"
+        _ = get(url, parameters: [:], completionHandler: { (data, error) in
+            if let error = error {
+                print(error)
+                completion(nil, error)
+            } else {
+                let response = self.parseStudentInfo(data: data)
+                if let info = response.0 {
+                    completion(info, nil)
+                } else {
+                    completion(nil, response.1)
+                }
+            }
+        })
+    }
+    
+    func studentsInformation(completion: @escaping (_ result: [StudentInformation]?, _ error: NSError?) -> Void) {
+        let params = [Constants.ParseParameterKeys.Order: "-updatedAt" as AnyObject]
+        _ = get(Constants.ParseMethod.StudentLocation, parameters: params, apiType: .parse, completionHandler: { (data, error) in
+            if let error = error {
+                print(error)
+                completion(nil, error)
+            } else {
+                if let data = data {
+                    self.convertData(data, completionHandler: { (jsonDoc, error) in
+                        var students = [StudentInformation]()
+                        if let results = jsonDoc?[Constants.ParseJSONResponseKeys.Results] as? [[String: AnyObject]] {
+                            for doc in results {
+                                students.append(StudentInformation(doc))
+                            }
+                            completion(students, nil)
+                            return
+                        }
+                        let userInfo = [NSLocalizedDescriptionKey: "Could not parse the data as JSOn: \(data)"]
+                        completion(students, NSError(domain: "studentsInformation", code: 1, userInfo: userInfo))
+                    })
+                }
+            }
+        })
+    }
+    
+    func studentInformation(completion: @escaping (_ result: StudentInformation?, _ error: NSError?) -> Void) {
+        let params = [Constants.ParseParameterKeys.Where: "{\"uniqueKey\":\(userKey)\"}" as AnyObject]
+        _ = get(Constants.ParseMethod.StudentLocation, parameters: params, apiType: .parse, completionHandler: { (data, error) in
+            if let error = error {
+                print(error)
+                completion(nil, error)
+            } else {
+                if let data = data {
+                    self.convertData(data, completionHandler: { (jsonDoc, error) in
+                        if let results = jsonDoc?[Constants.ParseJSONResponseKeys.Results] as? [[String: AnyObject]] {
+                            if let studentInformation = results.first {
+                                completion(StudentInformation(studentInformation), nil)
+                                return
+                            }
+                            completion(nil, nil)
+                        }
+                        let userInfo = [NSLocalizedDescriptionKey: "Could not parse the data as JSON: \(data)"]
+                        completion(nil, NSError(domain: "studentInformation", code: 1, userInfo: userInfo))
+                    })
+                }
+            }
+        })
+    }
 }

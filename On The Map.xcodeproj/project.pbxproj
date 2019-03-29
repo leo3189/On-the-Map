@@ -20,6 +20,11 @@
 		D75A3E4F2248F57C008961A4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75A3E4E2248F57C008961A4 /* Constants.swift */; };
 		D75A3E51224A5158008961A4 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75A3E50224A5158008961A4 /* CustomView.swift */; };
 		D75A3E53224BA505008961A4 /* OnTheMapTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75A3E52224BA505008961A4 /* OnTheMapTabVC.swift */; };
+		D75A3E55224CEB4C008961A4 /* StudentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75A3E54224CEB4C008961A4 /* StudentInfo.swift */; };
+		D75A3E57224CEBAA008961A4 /* StudentsLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75A3E56224CEBAA008961A4 /* StudentsLocation.swift */; };
+		D75A3E59224CEC07008961A4 /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75A3E58224CEC07008961A4 /* StudentInformation.swift */; };
+		D75A3E5B224CF462008961A4 /* PostingViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75A3E5A224CF462008961A4 /* PostingViewVC.swift */; };
+		D75A3E5D224E43B5008961A4 /* MapPinLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75A3E5C224E43B5008961A4 /* MapPinLocation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +43,11 @@
 		D75A3E4E2248F57C008961A4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D75A3E50224A5158008961A4 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		D75A3E52224BA505008961A4 /* OnTheMapTabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnTheMapTabVC.swift; sourceTree = "<group>"; };
+		D75A3E54224CEB4C008961A4 /* StudentInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInfo.swift; sourceTree = "<group>"; };
+		D75A3E56224CEBAA008961A4 /* StudentsLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsLocation.swift; sourceTree = "<group>"; };
+		D75A3E58224CEC07008961A4 /* StudentInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
+		D75A3E5A224CF462008961A4 /* PostingViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingViewVC.swift; sourceTree = "<group>"; };
+		D75A3E5C224E43B5008961A4 /* MapPinLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPinLocation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +99,9 @@
 				D75A3E482243BA0E008961A4 /* LoginModel.swift */,
 				D75A3E4A2245000C008961A4 /* UserModel.swift */,
 				D75A3E4C22450214008961A4 /* ClientApi.swift */,
+				D75A3E54224CEB4C008961A4 /* StudentInfo.swift */,
+				D75A3E56224CEBAA008961A4 /* StudentsLocation.swift */,
+				D75A3E58224CEC07008961A4 /* StudentInformation.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -98,6 +111,8 @@
 			children = (
 				D75A3E402243B4E0008961A4 /* LoginVC.swift */,
 				D75A3E52224BA505008961A4 /* OnTheMapTabVC.swift */,
+				D75A3E5A224CF462008961A4 /* PostingViewVC.swift */,
+				D75A3E5C224E43B5008961A4 /* MapPinLocation.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -183,14 +198,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D75A3E57224CEBAA008961A4 /* StudentsLocation.swift in Sources */,
 				D75A3E492243BA0E008961A4 /* LoginModel.swift in Sources */,
 				D75A3E472243B91D008961A4 /* logInTextFieldView.swift in Sources */,
 				D75A3E4D22450215008961A4 /* ClientApi.swift in Sources */,
 				D75A3E51224A5158008961A4 /* CustomView.swift in Sources */,
+				D75A3E55224CEB4C008961A4 /* StudentInfo.swift in Sources */,
+				D75A3E5D224E43B5008961A4 /* MapPinLocation.swift in Sources */,
+				D75A3E5B224CF462008961A4 /* PostingViewVC.swift in Sources */,
 				D75A3E452243B82D008961A4 /* logInButtonView.swift in Sources */,
 				D75A3E412243B4E0008961A4 /* LoginVC.swift in Sources */,
 				D75A3E4B2245000C008961A4 /* UserModel.swift in Sources */,
 				D75A3E2C2243B42A008961A4 /* AppDelegate.swift in Sources */,
+				D75A3E59224CEC07008961A4 /* StudentInformation.swift in Sources */,
 				D75A3E53224BA505008961A4 /* OnTheMapTabVC.swift in Sources */,
 				D75A3E4F2248F57C008961A4 /* Constants.swift in Sources */,
 			);
