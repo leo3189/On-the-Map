@@ -225,6 +225,74 @@ class ClientApi: NSObject {
         
     }
     
+    func put(
+        _ method: String,
+        parameters: [String: AnyObject],
+        requestHeaderParameters: [String: AnyObject]? = nil,
+        jsonBody: String,
+        apiType: APITpye = .udacity,
+        completion: @escaping (_ result: Data?, _ error: NSError?) -> Void) -> URLSessionDataTask {
+        let request = NSMutableURLRequest(url: buildURL(parameters, withPathExtension: method, apiType: apiType))
+        request.httpMethod = "PUT"
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = jsonBody.data(using: String.Encoding.utf8)
+        
+        if let headersParam = requestHeaderParameters {
+            for (key, value) in headersParam {
+                request.addValue("\(value)", forHTTPHeaderField: key)
+            }
+        }
+        
+        showActivityIndicator(true)
+        
+        let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
+            func sendError(_ error: String) {
+                self.showActivityIndicator(false)
+                print(error)
+                let userInfo = [NSLocalizedDescriptionKey: error]
+                completion(nil, NSError(domain: "put", code: 1, userInfo: userInfo))
+            }
+            
+            guard (error == nil) else {
+                sendError("There was an error with your request: \(error!.localizedDescription)")
+                return
+            }
+            
+            guard let statusCode = (response as? HTTPURLResponse)?.statusCode else {
+                sendError("Request did not return a valid response")
+                return
+            }
+            
+            switch (statusCode) {
+            case 403:
+                sendError("Please check your credentials and try again")
+            case 200..<299:
+                break
+            default:
+                sendError("Your request returned a status code other than 2xx!")
+            }
+            
+            guard let data = data else {
+                sendError("No data was returned by the request!")
+                return
+            }
+            
+            var newData = data
+            if apiType == .udacity {
+                let range = Range(5..<data.count)
+                newData = data.subdata(in: range)
+            }
+            
+            self.showActivityIndicator(false)
+            
+            completion(newData, nil)
+        }
+        
+        task.resume()
+        return task
+    }
+    
     private func buildURL(_ parameters: [String: AnyObject], withPathExtension: String? = nil, apiType: APITpye = .udacity) -> URL {
         var components = URLComponents()
         components.scheme = apiType == .udacity ? Constants.Udacity.Scheme : Constants.Parse.Scheme
@@ -460,5 +528,43 @@ extension ClientApi {
             }
         })
 
+    }
+    
+    func updateStudentLocation(info: StudentInformation, completion: @escaping (_ success: Bool, _ error: NSError?) -> Void) {
+        let paramHeaders = [
+            Constants.ParseParameterKeys.APIKey: Constants.ParseParametersValus.APIKey,
+            Constants.ParseParameterKeys.ApplicationID: Constants.ParseParametersValus.ApplicationID
+        ] as [String: AnyObject]
+        
+        let jsonBody = "{\"uniqueKey\": \"\(info.uniqueKey)\", \"firstName\": \"\(info.firstName)\", \"lastName\": \"\(info.lastName)\",\"mapString\": \"\(info.mapString)\", \"mediaURL\": \"\(info.mediaURL)\",\"latitude\": \(info.latitude), \"longitude\": \(info.longitude)}"
+        
+        let url = Constants.ParseMethod.StudentLocation + "/" + (info.locationID ?? "")
+        
+        _ = put(url, parameters: [:], requestHeaderParameters: paramHeaders, jsonBody: jsonBody, apiType: .parse, completion: { (data, error) in
+            if let error = error {
+                print(error)
+                completion(false, error)
+            } else {
+                struct Response: Codable {
+                    let updatedAt: String?
+                }
+                
+                var response: Response!
+                do {
+                    if let data = data {
+                        let jsonDecoder = JSONDecoder()
+                        response = try jsonDecoder.decode(Response.self, from: data)
+                        if let response = response, response.updatedAt != nil {
+                            completion(true, nil)
+                        }
+                    }
+                } catch {
+                    let msg = "Could not parse the data as JSON: \(error.localizedDescription)"
+                    print(msg)
+                    let userInfo = [NSLocalizedDescriptionKey: msg]
+                    completion(false, NSError(domain: "updateStudentLocation", code: 1, userInfo: userInfo))
+                }
+            }
+        })
     }
 }
