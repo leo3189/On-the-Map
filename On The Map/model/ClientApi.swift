@@ -423,4 +423,42 @@ extension ClientApi {
             }
         })
     }
+    
+    func postStudentLocation(info: StudentInformation, completion: @escaping (_ success: Bool, _ error: NSError?) -> Void) {
+        let paramHeaders = [
+            Constants.ParseParameterKeys.APIKey: Constants.ParseParametersValus.APIKey,
+            Constants.ParseParameterKeys.ApplicationID: Constants.ParseParametersValus.ApplicationID
+        ] as [String: AnyObject]
+        
+        let jsonBody = "{\"uniqueKey\": \"\(info.uniqueKey)\", \"firstName\": \"\(info.firstName)\", \"lastName\": \"\(info.lastName)\",\"mapString\": \"\(info.mapString)\", \"mediaURL\": \"\(info.mediaURL)\",\"latitude\": \(info.latitude), \"longitude\": \(info.longitude)}"
+        
+        _ = post(Constants.ParseMethod.StudentLocation, parameters: [:], requestHeaderParameters: paramHeaders, jsonBody: jsonBody, apiType: .parse, completionHandler: { (data, error) in
+            if let error = error {
+                print(error)
+                completion(false, error)
+            } else {
+                struct Response: Codable {
+                    let createdAt: String?
+                    let objectId: String?
+                }
+                
+                var response: Response!
+                do {
+                    if let data = data {
+                        let jsonDecoder = JSONDecoder()
+                        response = try jsonDecoder.decode(Response.self, from: data)
+                        if let  response = response, response.createdAt != nil {
+                            completion(true, nil)
+                        }
+                    }
+                } catch {
+                    let msg =  "Could not parse the data as JSON: \(error.localizedDescription)"
+                    print(msg)
+                    let userInfo = [NSLocalizedDescriptionKey: msg]
+                    completion(false, NSError(domain: "postStudentLocation", code: 1, userInfo: userInfo))
+                }
+            }
+        })
+
+    }
 }

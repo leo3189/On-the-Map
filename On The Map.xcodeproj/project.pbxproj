@@ -25,6 +25,7 @@
 		D75A3E59224CEC07008961A4 /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75A3E58224CEC07008961A4 /* StudentInformation.swift */; };
 		D75A3E5B224CF462008961A4 /* PostingViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75A3E5A224CF462008961A4 /* PostingViewVC.swift */; };
 		D75A3E5D224E43B5008961A4 /* MapPinLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75A3E5C224E43B5008961A4 /* MapPinLocation.swift */; };
+		D75A3E5F22522E30008961A4 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75A3E5E22522E30008961A4 /* Location.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		D75A3E58224CEC07008961A4 /* StudentInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
 		D75A3E5A224CF462008961A4 /* PostingViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingViewVC.swift; sourceTree = "<group>"; };
 		D75A3E5C224E43B5008961A4 /* MapPinLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPinLocation.swift; sourceTree = "<group>"; };
+		D75A3E5E22522E30008961A4 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				D75A3E54224CEB4C008961A4 /* StudentInfo.swift */,
 				D75A3E56224CEBAA008961A4 /* StudentsLocation.swift */,
 				D75A3E58224CEC07008961A4 /* StudentInformation.swift */,
+				D75A3E5E22522E30008961A4 /* Location.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 			files = (
 				D75A3E57224CEBAA008961A4 /* StudentsLocation.swift in Sources */,
 				D75A3E492243BA0E008961A4 /* LoginModel.swift in Sources */,
+				D75A3E5F22522E30008961A4 /* Location.swift in Sources */,
 				D75A3E472243B91D008961A4 /* logInTextFieldView.swift in Sources */,
 				D75A3E4D22450215008961A4 /* ClientApi.swift in Sources */,
 				D75A3E51224A5158008961A4 /* CustomView.swift in Sources */,
