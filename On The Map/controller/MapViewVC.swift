@@ -47,8 +47,9 @@ class MapViewVC: BaseMapViewController{
     
     private func showStudentsInformation(_ studentsInformation: [StudentInformation]) {
         mapView.removeAnnotations(mapView.annotations)
-        print("mapview pin")
-        for info in studentsInformation where info.latitude != 0 && info.longitude != 0 {
+        
+        print("Student info: \(studentsInformation)")
+        for info in studentsInformation {
             let annotion = MKPointAnnotation()
             annotion.title = info.labelName
             annotion.subtitle = info.mediaURL

@@ -17,7 +17,7 @@ class BaseMapViewController: UIViewController, MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         let reuseId = "pin"
-        print("PIN: \(reuseId)")
+        
         var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
         
         if pinView == nil {
