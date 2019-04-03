@@ -199,9 +199,13 @@
                                     <action selector="enterWebSiteBtnTapped:" destination="UIO-Cd-lOz" eventType="editingDidEnd" id="taO-76-Qv6"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AH9-I9-r17">
-                                <rect key="frame" x="42" y="312" width="290" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AH9-I9-r17">
+                                <rect key="frame" x="42.666666666666657" y="312" width="290" height="50"/>
                                 <color key="backgroundColor" red="0.18039215689999999" green="0.52941176469999995" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="eNN-Ku-BkR"/>
+                                    <constraint firstAttribute="width" constant="290" id="gDP-JX-U2S"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                 <state key="normal" title="FIND LOCATION">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -210,8 +214,8 @@
                                     <action selector="findLocationBtnTapped:" destination="UIO-Cd-lOz" eventType="touchUpInside" id="Mn2-Uo-R39"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="L2a-Zc-MIR">
-                                <rect key="frame" x="177.66666666666666" y="397" width="20" height="20"/>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="L2a-Zc-MIR">
+                                <rect key="frame" x="177.66666666666666" y="396" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="ENf-kk-yUP"/>
                                     <constraint firstAttribute="width" constant="20" id="RCr-UD-hnx"/>
@@ -224,9 +228,11 @@
                             <constraint firstItem="hj9-GR-fW1" firstAttribute="centerX" secondItem="P3k-t7-Fbd" secondAttribute="centerX" id="V02-tT-2ZT"/>
                             <constraint firstItem="S6w-hd-wfj" firstAttribute="top" secondItem="hj9-GR-fW1" secondAttribute="bottom" constant="27" id="eZV-bO-tgc"/>
                             <constraint firstItem="ppJ-JQ-Kuz" firstAttribute="top" secondItem="6Th-ys-eqU" secondAttribute="top" id="gKq-ce-fMb"/>
+                            <constraint firstItem="AH9-I9-r17" firstAttribute="centerX" secondItem="S6w-hd-wfj" secondAttribute="centerX" id="l9Z-WC-EbR"/>
                             <constraint firstItem="L2a-Zc-MIR" firstAttribute="top" secondItem="AH9-I9-r17" secondAttribute="bottom" constant="34" id="mbF-yw-G3j"/>
                             <constraint firstItem="L2a-Zc-MIR" firstAttribute="centerX" secondItem="P3k-t7-Fbd" secondAttribute="centerX" id="nZ5-wj-VOv"/>
                             <constraint firstItem="hj9-GR-fW1" firstAttribute="top" secondItem="ppJ-JQ-Kuz" secondAttribute="bottom" constant="32" id="rtM-Oj-d5h"/>
+                            <constraint firstItem="AH9-I9-r17" firstAttribute="top" secondItem="S6w-hd-wfj" secondAttribute="bottom" constant="29" id="xoo-jl-h39"/>
                             <constraint firstItem="ppJ-JQ-Kuz" firstAttribute="centerX" secondItem="6Th-ys-eqU" secondAttribute="centerX" id="z5e-Qp-ZpF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Th-ys-eqU"/>
