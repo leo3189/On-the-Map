@@ -411,20 +411,20 @@ extension ClientApi {
         return sessionData
     }
     
-    func parseStudentInfo(data: Data?) -> (StudentInfo?, NSError?) {
-        var response: (StudentInfo: StudentInfo?, error: NSError?) = (nil, nil)
-        do {
-            if let data = data {
-                let jsonDecoder = JSONDecoder()
-                response.StudentInfo = try jsonDecoder.decode(StudentInfo.self, from: data)
-            }
-        } catch {
-            print("Could not parse the data as JSON: \(error.localizedDescription)")
-            let userInfo = [NSLocalizedDescriptionKey: error]
-            response.error = NSError(domain: "parseStudentInfo", code: 1, userInfo: userInfo)
-        }
-        return response
-    }
+//    func parseStudentInfo(data: Data?) -> (StudentInfo?, NSError?) {
+//        var response: (StudentInfo: StudentInfo?, error: NSError?) = (nil, nil)
+//        do {
+//            if let data = data {
+//                let jsonDecoder = JSONDecoder()
+//                response.StudentInfo = try jsonDecoder.decode(StudentInfo.self, from: data)
+//            }
+//        } catch {
+//            print("Could not parse the data as JSON: \(error.localizedDescription)")
+//            let userInfo = [NSLocalizedDescriptionKey: error]
+//            response.error = NSError(domain: "parseStudentInfo", code: 1, userInfo: userInfo)
+//        }
+//        return response
+//    }
     
     func studentInfo(completion: @escaping (_ result: StudentInfo?, _ error: NSError?) -> Void) {
         let url = Constants.UdacityMethod.Users + "\(userKey)"
@@ -433,12 +433,19 @@ extension ClientApi {
                 print(error)
                 completion(nil, error)
             } else {
-                print("student data: \(data)")
-                let response = self.parseStudentInfo(data: data)
-                if let info = response.0 {
-                    completion(info, nil)
-                } else {
-                    completion(nil, response.1)
+//                let response = self.parseStudentInfo(data: data)
+//                if let info = response.0 {
+//                    completion(info, nil)
+//                } else {
+//                    completion(nil, response.1)
+//                }
+                if let data = data {
+                    self.convertData(data, completionHandler: { (jsonDoc, error) in
+//                        print("jsonDoc: \(String(describing: jsonDoc))")
+                        var response: (StudentInfo: StudentInfo?, error: NSError?) = (nil, nil)
+                        response.StudentInfo = StudentInfo(jsonDoc as! [String : AnyObject])
+                        completion(response.0, nil)
+                    })
                 }
             }
         })
