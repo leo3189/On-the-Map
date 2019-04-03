@@ -26,6 +26,8 @@
 		D75A3E5B224CF462008961A4 /* PostingViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75A3E5A224CF462008961A4 /* PostingViewVC.swift */; };
 		D75A3E5D224E43B5008961A4 /* MapPinLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75A3E5C224E43B5008961A4 /* MapPinLocation.swift */; };
 		D75A3E5F22522E30008961A4 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75A3E5E22522E30008961A4 /* Location.swift */; };
+		D75A3E612252E06A008961A4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75A3E602252E06A008961A4 /* Extensions.swift */; };
+		D75A3E632254C904008961A4 /* MapViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75A3E622254C904008961A4 /* MapViewVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		D75A3E5A224CF462008961A4 /* PostingViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingViewVC.swift; sourceTree = "<group>"; };
 		D75A3E5C224E43B5008961A4 /* MapPinLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPinLocation.swift; sourceTree = "<group>"; };
 		D75A3E5E22522E30008961A4 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		D75A3E602252E06A008961A4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		D75A3E622254C904008961A4 /* MapViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +95,7 @@
 				D75A3E342243B42D008961A4 /* LaunchScreen.storyboard */,
 				D75A3E372243B42D008961A4 /* Info.plist */,
 				D75A3E4E2248F57C008961A4 /* Constants.swift */,
+				D75A3E602252E06A008961A4 /* Extensions.swift */,
 			);
 			path = "On The Map";
 			sourceTree = "<group>";
@@ -116,6 +121,7 @@
 				D75A3E52224BA505008961A4 /* OnTheMapTabVC.swift */,
 				D75A3E5A224CF462008961A4 /* PostingViewVC.swift */,
 				D75A3E5C224E43B5008961A4 /* MapPinLocation.swift */,
+				D75A3E622254C904008961A4 /* MapViewVC.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -205,6 +211,7 @@
 				D75A3E492243BA0E008961A4 /* LoginModel.swift in Sources */,
 				D75A3E5F22522E30008961A4 /* Location.swift in Sources */,
 				D75A3E472243B91D008961A4 /* logInTextFieldView.swift in Sources */,
+				D75A3E632254C904008961A4 /* MapViewVC.swift in Sources */,
 				D75A3E4D22450215008961A4 /* ClientApi.swift in Sources */,
 				D75A3E51224A5158008961A4 /* CustomView.swift in Sources */,
 				D75A3E55224CEB4C008961A4 /* StudentInfo.swift in Sources */,
@@ -215,6 +222,7 @@
 				D75A3E4B2245000C008961A4 /* UserModel.swift in Sources */,
 				D75A3E2C2243B42A008961A4 /* AppDelegate.swift in Sources */,
 				D75A3E59224CEC07008961A4 /* StudentInformation.swift in Sources */,
+				D75A3E612252E06A008961A4 /* Extensions.swift in Sources */,
 				D75A3E53224BA505008961A4 /* OnTheMapTabVC.swift in Sources */,
 				D75A3E4F2248F57C008961A4 /* Constants.swift in Sources */,
 			);

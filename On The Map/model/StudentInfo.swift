@@ -9,5 +9,12 @@
 import Foundation
 
 struct StudentInfo: Codable {
-    let user: User
+    let user: U
+}
+
+struct U: Codable {
+    let name: String
+    enum CodingKeys: String, CodingKey {
+        case name = "nickname"
+    }
 }

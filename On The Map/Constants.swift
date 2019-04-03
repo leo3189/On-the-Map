@@ -18,7 +18,7 @@ struct Constants {
     
     struct UdacityMethod {
         static let Authentication = "/session"
-        static let Users = "/users"
+        static let Users = "/users/"
     }
     
     struct UdacityJSONResponseKeys {
@@ -32,7 +32,7 @@ struct Constants {
     struct Parse {
         static let Scheme = "https"
         static let Host = "parse.udacity.com"
-        static let Path = "path"
+        static let Path = "/parse"
     }
     
     struct ParseMethod {

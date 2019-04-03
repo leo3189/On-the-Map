@@ -43,22 +43,58 @@ class OnTheMapTabVC: UITabBarController, MKMapViewDelegate {
     }
     
     @IBAction func addPinBtnTapped(_ sender: Any) {
+        enableControllers(false)
+        ClientApi.shared().studentInformation(completion: { (studentInformation, error) in
+            if let error = error {
+                self.performUIUpdateOnMain {
+                    self.showInfo(title: "Error fetching student location", message: error.localizedDescription)
+                }
+            } else if let studentInformation = studentInformation {
+                let msg = "User \"\(studentInformation.labelName)\" has already posted a Staudent Location. Whould you like to Overwrite it?"
+                self.performUIUpdateOnMain {
+                    self.showConfirmationAlert(message: msg, actionTitle: "Overwrite", action: {
+                        self.showPostingView(studentLocationID: studentInformation.locationID)
+                    })
+                }
+            } else {
+                self.performUIUpdateOnMain {
+                    self.showPostingView()
+                }
+            }
+            self.enableControllers(true)
+        })
     }
     
     @IBAction func refreshBtnTapped(_ sender: Any) {
+        loadStudentsInformation()
     }
     
     @objc private func loadStudentsInformation() {
         NotificationCenter.default.post(name: .reloadStarted, object: nil)
         ClientApi.shared().studentsInformation(completion: { (studentsInformation, error) in
             if let error = error {
-                
+                self.showInfo(title: "Error", message: error.localizedDescription)
+                NotificationCenter.default.post(name: .reloadCompleted, object: nil)
+                return
             }
+            if let studentsInformation = studentsInformation {
+                StudentsLocation.shared.studentsInformation = studentsInformation
+            }
+            NotificationCenter.default.post(name:.reloadCompleted, object: nil)
         })
     }
     
     private func showPostingView(studentLocationID: String? = nil) {
         let postingVIew = storyboard?.instantiateViewController(withIdentifier: "PostingView") as! PostingView
-        
+        postingVIew.locationID = studentLocationID
+        navigationController?.pushViewController(postingVIew, animated: true)
+    }
+    
+    private func enableControllers(_ enable: Bool) {
+        performUIUpdateOnMain {
+            self.addPinButton.isEnabled = enable
+            self.logOutButton.isEnabled = enable
+            self.refreshButton.isEnabled = enable
+        }
     }
 }

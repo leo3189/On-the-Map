@@ -46,7 +46,15 @@ class MapPinLocation: OnTheMapTabVC {
         if let studentLocation = studentInformation {
             showNetworkOperation(true)
             if studentLocation.locationID == nil {
-                ClientApi.shared()
+                ClientApi.shared().postStudentLocation(info: studentLocation, completion: { (success, error) in
+                    self.showNetworkOperation(false)
+                    self.handleSyncLocationResponse(error: error)
+                })
+            } else {
+                ClientApi.shared().updateStudentLocation(info: studentLocation, completion: { (success, error) in
+                    self.showNetworkOperation(false)
+                    self.handleSyncLocationResponse(error: error)
+                })
             }
         }
     }

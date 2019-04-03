@@ -42,7 +42,7 @@ class ClientApi: NSObject {
         
         if apiType == .parse {
             request.addValue(Constants.ParseParametersValus.APIKey, forHTTPHeaderField: Constants.ParseParameterKeys.APIKey)
-            request.addValue(Constants.ParseParametersValus.ApplicationID, forHTTPHeaderField: Constants.ParseParametersValus.ApplicationID)
+            request.addValue(Constants.ParseParametersValus.ApplicationID, forHTTPHeaderField: Constants.ParseParameterKeys.ApplicationID)
         }
         
         showActivityIndicator(true)
@@ -433,6 +433,7 @@ extension ClientApi {
                 print(error)
                 completion(nil, error)
             } else {
+                print("student data: \(data)")
                 let response = self.parseStudentInfo(data: data)
                 if let info = response.0 {
                     completion(info, nil)
