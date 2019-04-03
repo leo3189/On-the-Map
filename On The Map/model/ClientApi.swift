@@ -477,7 +477,7 @@ extension ClientApi {
     }
     
     func studentInformation(completion: @escaping (_ result: StudentInformation?, _ error: NSError?) -> Void) {
-        let params = [Constants.ParseParameterKeys.Where: "{\"uniqueKey\":\(userKey)\"}" as AnyObject]
+        let params = [Constants.ParseParameterKeys.Where: "{\"uniqueKey\":\"\(userKey)\"}" as AnyObject]
         _ = get(Constants.ParseMethod.StudentLocation, parameters: params, apiType: .parse, completionHandler: { (data, error) in
             if let error = error {
                 print(error)

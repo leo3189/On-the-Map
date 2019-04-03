@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -161,7 +161,7 @@
         <!--Posting View-->
         <scene sceneID="1Qw-hj-0ZO">
             <objects>
-                <viewController storyboardIdentifier="PostingClass" id="UIO-Cd-lOz" customClass="PostingView" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PostingView" id="UIO-Cd-lOz" customClass="PostingView" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="P3k-t7-Fbd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -315,7 +315,6 @@
         <!--On The Map-->
         <scene sceneID="IBX-L2-Hg2">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6Ow-U7-T1P" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tabBarController id="gE4-Tf-4YY" customClass="OnTheMapTabVC" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="On The Map" id="Qww-KX-svk">
                         <barButtonItem key="leftBarButtonItem" title="Log Out" id="Dox-AH-eVK">
@@ -349,6 +348,7 @@
                         <segue destination="gtf-eo-a1X" kind="relationship" relationship="viewControllers" id="bQk-RK-uyj"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Ow-U7-T1P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1514" y="27"/>
         </scene>
