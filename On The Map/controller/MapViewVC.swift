@@ -18,7 +18,6 @@ class MapViewVC: BaseMapViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print("Map View")
         NotificationCenter.default.addObserver(self, selector: #selector(reloadStarted), name: .reloadStarted, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reloadCompleted), name: .reloadCompleted, object: nil)
         
@@ -48,7 +47,6 @@ class MapViewVC: BaseMapViewController{
     private func showStudentsInformation(_ studentsInformation: [StudentInformation]) {
         mapView.removeAnnotations(mapView.annotations)
         
-        print("Student info: \(studentsInformation)")
         for info in studentsInformation {
             let annotion = MKPointAnnotation()
             annotion.title = info.labelName

@@ -127,7 +127,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="59.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Idl-du-uk4">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_pin" translatesAutoresizingMaskIntoConstraints="NO" id="Idl-du-uk4">
                                                     <rect key="frame" x="15" y="7" width="45" height="45"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="e4i-8u-GWc"/>
@@ -178,11 +178,13 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="icon_listview-deselected" selectedImage="icon_listview-selected" id="1BY-HS-XGX"/>
                     <connections>
-                        <outlet property="activityIndicator" destination="lXE-SY-T4d" id="fZF-1J-9OG"/>
+                        <outlet property="activityIndicator" destination="lXE-SY-T4d" id="IGZ-1O-smV"/>
+                        <outlet property="dataProvider" destination="jBz-nw-nhx" id="emM-du-RRR"/>
                         <outlet property="listTV" destination="AFe-23-Lxm" id="oNq-E9-ZsV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BSI-Va-JFI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="jBz-nw-nhx" customClass="DataProvider" customModule="On_The_Map" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="2466" y="352"/>
         </scene>
@@ -427,6 +429,7 @@
         <image name="icon_listview-selected" width="75" height="50"/>
         <image name="icon_mapview-deselected" width="75" height="50"/>
         <image name="icon_mapview-selected" width="75" height="50"/>
+        <image name="icon_pin" width="24" height="24"/>
         <image name="icon_refresh" width="24" height="24"/>
         <image name="icon_world" width="52" height="67"/>
         <image name="logo-u" width="62" height="62"/>

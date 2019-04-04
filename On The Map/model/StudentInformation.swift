@@ -26,7 +26,7 @@ struct StudentInformation {
         self.mapString = dictionary["mapString"] as? String ?? ""
         self.mediaURL = dictionary["mediaURL"] as? String ?? ""
         self.latitude = dictionary["latitude"] as? Double ?? 0.0
-        self.longitude = dictionary["longituade"] as? Double ?? 0.0
+        self.longitude = dictionary["longitude"] as? Double ?? 0.0
     }
     
     var labelName: String {

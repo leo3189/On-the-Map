@@ -13,7 +13,7 @@ class ListVC: UIViewController, LocationSelectionDelegate {
     @IBOutlet weak var listTV: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var dataProvider: DataProvider!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -452,7 +452,7 @@ extension ClientApi {
     }
     
     func studentsInformation(completion: @escaping (_ result: [StudentInformation]?, _ error: NSError?) -> Void) {
-        let params = [Constants.ParseParameterKeys.Limit: "100" as AnyObject]
+        let params = [Constants.ParseParameterKeys.Order: "-updatedAt" as AnyObject]
         _ = get(Constants.ParseMethod.StudentLocation, parameters: params, apiType: .parse, completionHandler: { (data, error) in
             if let error = error {
                 print(error)
@@ -491,9 +491,10 @@ extension ClientApi {
                                 return
                             }
                             completion(nil, nil)
+                        } else {
+                            let userInfo = [NSLocalizedDescriptionKey: "Could not parse the data as JSON: \(data)"]
+                            completion(nil, NSError(domain: "studentInformation", code: 1, userInfo: userInfo))
                         }
-                        let userInfo = [NSLocalizedDescriptionKey: "Could not parse the data as JSON: \(data)"]
-                        completion(nil, NSError(domain: "studentInformation", code: 1, userInfo: userInfo))
                     })
                 }
             }

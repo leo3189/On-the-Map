@@ -93,7 +93,8 @@ class PostingView: UIViewController {
             "mapString": enterLocationTF.text!,
             "mediaURL": enterWebSiteTF.text!,
             "latitude": coordinate.latitude,
-            "longitude": coordinate.longitude] as [String: AnyObject]
+            "longitude": coordinate.longitude
+            ] as [String: AnyObject]
         
         if let locationID = locationID {
             studentInfo["objectId"] = locationID as AnyObject
