@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D7154BB52255848400681093 /* LocationTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7154BB42255848400681093 /* LocationTVCell.swift */; };
+		D7154BB72255856800681093 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7154BB62255856800681093 /* DataProvider.swift */; };
+		D7154BB92255870D00681093 /* ListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7154BB82255870D00681093 /* ListVC.swift */; };
 		D75A3E2C2243B42A008961A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75A3E2B2243B42A008961A4 /* AppDelegate.swift */; };
 		D75A3E312243B42A008961A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D75A3E2F2243B42A008961A4 /* Main.storyboard */; };
 		D75A3E332243B42D008961A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D75A3E322243B42D008961A4 /* Assets.xcassets */; };
@@ -32,6 +35,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D7154BB42255848400681093 /* LocationTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTVCell.swift; sourceTree = "<group>"; };
+		D7154BB62255856800681093 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		D7154BB82255870D00681093 /* ListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVC.swift; sourceTree = "<group>"; };
 		D75A3E282243B42A008961A4 /* On The Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On The Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D75A3E2B2243B42A008961A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D75A3E302243B42A008961A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -98,6 +104,7 @@
 				D75A3E372243B42D008961A4 /* Info.plist */,
 				D75A3E4E2248F57C008961A4 /* Constants.swift */,
 				D75A3E602252E06A008961A4 /* Extensions.swift */,
+				D7154BB62255856800681093 /* DataProvider.swift */,
 			);
 			path = "On The Map";
 			sourceTree = "<group>";
@@ -125,6 +132,7 @@
 				D75A3E5C224E43B5008961A4 /* MapPinLocation.swift */,
 				D75A3E622254C904008961A4 /* MapViewVC.swift */,
 				D75A3E642254DE37008961A4 /* BaseMapViewController.swift */,
+				D7154BB82255870D00681093 /* ListVC.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -135,6 +143,7 @@
 				D75A3E442243B82D008961A4 /* logInButtonView.swift */,
 				D75A3E462243B91D008961A4 /* logInTextFieldView.swift */,
 				D75A3E50224A5158008961A4 /* CustomView.swift */,
+				D7154BB42255848400681093 /* LocationTVCell.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -213,6 +222,7 @@
 				D75A3E652254DE37008961A4 /* BaseMapViewController.swift in Sources */,
 				D75A3E57224CEBAA008961A4 /* StudentsLocation.swift in Sources */,
 				D75A3E492243BA0E008961A4 /* LoginModel.swift in Sources */,
+				D7154BB72255856800681093 /* DataProvider.swift in Sources */,
 				D75A3E5F22522E30008961A4 /* Location.swift in Sources */,
 				D75A3E472243B91D008961A4 /* logInTextFieldView.swift in Sources */,
 				D75A3E632254C904008961A4 /* MapViewVC.swift in Sources */,
@@ -221,6 +231,7 @@
 				D75A3E55224CEB4C008961A4 /* StudentInfo.swift in Sources */,
 				D75A3E5D224E43B5008961A4 /* MapPinLocation.swift in Sources */,
 				D75A3E5B224CF462008961A4 /* PostingViewVC.swift in Sources */,
+				D7154BB92255870D00681093 /* ListVC.swift in Sources */,
 				D75A3E452243B82D008961A4 /* logInButtonView.swift in Sources */,
 				D75A3E412243B4E0008961A4 /* LoginVC.swift in Sources */,
 				D75A3E4B2245000C008961A4 /* UserModel.swift in Sources */,
@@ -228,6 +239,7 @@
 				D75A3E59224CEC07008961A4 /* StudentInformation.swift in Sources */,
 				D75A3E612252E06A008961A4 /* Extensions.swift in Sources */,
 				D75A3E53224BA505008961A4 /* OnTheMapTabVC.swift in Sources */,
+				D7154BB52255848400681093 /* LocationTVCell.swift in Sources */,
 				D75A3E4F2248F57C008961A4 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

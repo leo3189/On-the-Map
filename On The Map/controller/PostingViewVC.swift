@@ -23,15 +23,16 @@ class PostingView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        setUpNavBar()
     }
     
-    @IBAction func enterLocationBtnTapped(_ sender: Any) {
+    
+    @IBAction func findLocationBtnTapped(_ sender: Any) {
         let location = enterLocationTF.text!
         let link = enterWebSiteTF.text!
         
         if location.isEmpty || link.isEmpty {
-            showInfo(message: "All fields are required")
+            showInfo(message: "All fields are required.")
             return
         }
         
@@ -41,12 +42,6 @@ class PostingView: UIViewController {
         }
         
         geocode(location: location)
-    }
-    
-    @IBAction func enterWebSiteBtnTapped(_ sender: Any) {
-    }
-    
-    @IBAction func findLocationBtnTapped(_ sender: Any) {
     }
     
     private func geocode(location: String) {
@@ -81,6 +76,8 @@ class PostingView: UIViewController {
         self.enableControllers(true)
         
         let vc = storyboard?.instantiateViewController(withIdentifier: "MapPinLocationView") as! MapPinLocation
+        vc.studentInformation = buildStudentInfo(coordinate)
+        navigationController?.pushViewController(vc, animated: true)
         
     }
     

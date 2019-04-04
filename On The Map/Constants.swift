@@ -48,6 +48,7 @@ struct Constants {
         static let ApplicationID = "X-Parse-Application-Id"
         static let Where = "where"
         static let Order = "order"
+        static let Limit = "limit"
     }
     
     struct ParseParametersValus {

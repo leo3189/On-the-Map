@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MapPinLocation: OnTheMapTabVC {
+class MapPinLocation: BaseMapViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -60,7 +60,7 @@ class MapPinLocation: OnTheMapTabVC {
     }
     
     private func showLocations(location: Location) {
-        mapView.removeAnnotation(mapView!.annotations as! MKAnnotation)
+        mapView.removeAnnotations(mapView.annotations)
         if let coordinate = extractCoordinate(location: location) {
             let annotation = MKPointAnnotation()
             annotation.title = location.locationLabel

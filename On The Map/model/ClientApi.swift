@@ -452,7 +452,7 @@ extension ClientApi {
     }
     
     func studentsInformation(completion: @escaping (_ result: [StudentInformation]?, _ error: NSError?) -> Void) {
-        let params = [Constants.ParseParameterKeys.Order: "-updatedAt" as AnyObject]
+        let params = [Constants.ParseParameterKeys.Limit: "100" as AnyObject]
         _ = get(Constants.ParseMethod.StudentLocation, parameters: params, apiType: .parse, completionHandler: { (data, error) in
             if let error = error {
                 print(error)
